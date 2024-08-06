@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Serviço - FLORA BOT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>FLORA BOT</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Página Inicial</a></li>
+                    <li><a href="florabot.html">Flora Bot</a></li>
+                    <li><a href="termos.html">Termos de Serviço</a></li>
+                    <li><a href="privacidade.html">Política de Privacidade</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Termos de Serviço</h1>
+        <div class="terms">
+            <p>Ao utilizar este bot, você concorda com os seguintes termos de serviço:</p>
+            <h2>1. Uso do Bot</h2>
+            <p>O BOT da FTF STORE é fornecido "como está" e "conforme disponível". Nós nos reservamos o direito de modificar ou descontinuar o bot a qualquer momento, sem aviso prévio.</p>
+            <h2>2. Privacidade</h2>
+            <p>Nosso bot coleta apenas informações necessárias para seu funcionamento. Nós não compartilhamos suas informações pessoais com terceiros sem seu consentimento.</p>
+            <h2>3. Conduta do Usuário</h2>
+            <p>Você concorda em não utilizar o bot para qualquer atividade ilegal ou não autorizada. Você deve respeitar todas as leis e regulamentações aplicáveis ao usar o bot.</p>
+            <h2>4. Limitação de Responsabilidade</h2>
+            <p>Nós não somos responsáveis por qualquer dano direto, indireto, incidental ou consequencial resultante do uso ou da incapacidade de usar o bot.</p>
+            <h2>5. Alterações nos Termos</h2>
+            <p>Podemos alterar estes termos a qualquer momento. Se fizermos alterações, notificaremos você por meio do Discord ou atualizaremos esta página.</p>
+            <p>Última atualização: [2 de Agosto de 2024]</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 FTF STORE. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Modal para senha -->
+    <div id="password-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2>Digite a Senha</h2>
+            <div id="password-inputs">
+                <input type="text" maxlength="1" id="digit1" oninput="moveFocus(event, 'digit2')" onclick="this.select()">
+                <input type="text" maxlength="1" id="digit2" oninput="moveFocus(event, 'digit3')" onclick="this.select()">
+                <input type="text" maxlength="1" id="digit3" oninput="moveFocus(event, 'digit4')" onclick="this.select()">
+                <input type="text" maxlength="1" id="digit4" onclick="this.select()">
+            </div>
+            <div class="error" id="error-message"></div>
+            <button onclick="checkPassword()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const isAuthenticated = localStorage.getItem('isAuthenticated');
+            if (!isAuthenticated) {
+                document.getElementById('password-modal').style.display = 'flex';
+            }
+        });
+
+        function closeModal() {
+            document.getElementById('password-modal').style.display = 'none';
+        }
+
+        function moveFocus(event, nextFieldId) {
+            const input = event.target;
+            if (input.value.length >= input.maxLength) {
+                const nextField = document.getElementById(nextFieldId);
+                if (nextField) nextField.focus();
+            }
+        }
+
+        function checkPassword() {
+            const correctPassword = '1405';
+            const digit1 = document.getElementById('digit1').value;
+            const digit2 = document.getElementById('digit2').value;
+            const digit3 = document.getElementById('digit3').value;
+            const digit4 = document.getElementById('digit4').value;
+            const enteredPassword = digit1 + digit2 + digit3 + digit4;
+
+            if (enteredPassword === correctPassword) {
+                localStorage.setItem('isAuthenticated', 'true');
+                closeModal();
+            } else {
+                document.getElementById('error-message').textContent = 'Senha incorreta. Você não tem permissão.';
+            }
+        }
+    </script>
+</body>
+</html>

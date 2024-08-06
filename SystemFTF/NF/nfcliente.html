@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerar Nota Fiscal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #3488b2;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input[type="text"], input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .product-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .product-row input[type="text"] {
+            flex: 2;
+            margin-right: 10px;
+        }
+        .product-row input[type="number"] {
+            flex: 1;
+        }
+        button {
+            padding: 12px;
+            font-size: 16px;
+            color: white;
+            background-color: #3488b2;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #2a6a8a;
+        }
+        .add-product {
+            background-color: #2a6a8a;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #3488b2;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        /* Estilos do modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(39, 39, 39, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #3488b2;
+}
+
+.modal-content input {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    text-align: center;
+    font-size: 24px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(40px);
+    transition: .5s ease-in-out;
+}
+
+.modal-content input:focus {
+    box-shadow: 0 0 15px #1d1d1d;
+    outline: none;
+}
+
+.modal-content .error {
+    color: red;
+    margin-top: 10px;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3488b2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.modal-content button:hover {
+    background-color: #2a6a8a;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+    </style>
+</head>
+<body>
+    <a href="../index.html"> <- Voltar</a>
+    <div class="container">
+        <h1>Gerar Nota Fiscal</h1>
+        <div id="products">
+            <div class="form-group product-row">
+                <input type="text" placeholder="Nome do Produto">
+                <input type="number" placeholder="Valor R$" step="0.01" min="0">
+            </div>
+        </div>
+        <button class="add-product" onclick="addProduct()">Adicionar mais produtos</button>
+        <br><br><br>
+        <div class="form-group">
+            <label for="name">Nome da Pessoa:</label>
+            <input type="text" id="name" placeholder="Digite o nome">
+        </div>
+        <div class="form-group">
+            <label for="total">Valor Total:</label>
+            <input type="text" id="total" placeholder="Valor total aparecerá aqui." readonly>
+        </div>
+        <button onclick="generateNote()">Gerar Nota Fiscal</button>
+    </div>
+
+     <!-- Modal para senha -->
+     <div id="password-modal2" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2>Digite a Senha</h2>
+            <div id="password-inputs">
+                <input type="text" maxlength="1" id="digito1" oninput="moveFocus(event, 'digito2')" onclick="this.select()">
+                <input type="text" maxlength="1" id="digito2" oninput="moveFocus(event, 'digito3')" onclick="this.select()">
+                <input type="text" maxlength="1" id="digito3" oninput="moveFocus(event, 'digito4')" onclick="this.select()">
+                <input type="text" maxlength="1" id="digito4" onclick="this.select()">
+            </div>
+            <div class="error" id="error-message2"></div>
+            <button onclick="checkPassword2()">Enviar</button>
+        </div>
+    </div>
+
+
+    <script>
+        let productCount = 1;
+
+        function addProduct() {
+            productCount++;
+            const productDiv = document.createElement('div');
+            productDiv.className = 'form-group product-row';
+            productDiv.innerHTML = `
+                <input type="text" placeholder="Nome do Produto">
+                <input type="number" placeholder="Valor R$" step="0.01" min="0">
+            `;
+            document.getElementById('products').appendChild(productDiv);
+        }
+
+        function calculateTotal() {
+            const prices = document.querySelectorAll('#products input[type="number"]');
+            let total = 0;
+            prices.forEach(priceInput => {
+                const value = parseFloat(priceInput.value) || 0;
+                total += value;
+            });
+            document.getElementById('total').value = total.toFixed(2);
+        }
+
+        function generateNote() {
+            const name = document.getElementById('name').value;
+            const productRows = document.querySelectorAll('#products .product-row');
+            let productDetails = '';
+            let totalPrice = 0;
+
+            productRows.forEach((row, index) => {
+                const productName = row.querySelector('input[type="text"]').value;
+                const productPrice = parseFloat(row.querySelector('input[type="number"]').value) || 0;
+                totalPrice += productPrice;
+                productDetails += `<p><strong>Produto ${index + 1}:</strong> ${productName} - R$${productPrice.toFixed(2)}</p>`;
+            });
+
+            // Armazenar dados no localStorage
+            localStorage.setItem('name', name);
+            localStorage.setItem('productDetails', productDetails);
+            localStorage.setItem('totalPrice', totalPrice.toFixed(2));
+
+            // Redirecionar para a página de carregamento
+            window.location.href = 'loading.html';
+        }
+
+        // Recalcular o total quando os preços forem alterados
+        document.addEventListener('input', calculateTotal);
+
+        // Carregar os dados e criar partículas quando a página for carregada
+window.onload = function() {
+            // Verificar se a senha já foi inserida anteriormente
+            const isRegistered = localStorage.getItem('Register');
+            if (isRegistered !== 'true') {
+                // Exibir o modal de senha se a senha não foi inserida
+                document.getElementById('password-modal2').style.display = 'flex';
+            }
+        };
+
+        function moveFocus(event, nextFieldId) {
+            const input = event.target;
+            if (input.value.length >= input.maxLength) {
+                const nextField = document.getElementById(nextFieldId);
+                if (nextField) nextField.focus();
+            }
+        }
+
+        function checkPassword2() {
+            const correctPassword2 = '0868';
+            const digito1 = document.getElementById('digito1').value;
+            const digito2 = document.getElementById('digito2').value;
+            const digito3 = document.getElementById('digito3').value;
+            const digito4 = document.getElementById('digito4').value;
+            const enteredPassword2 = digito1 + digito2 + digito3 + digito4;
+
+            if (enteredPassword2 === correctPassword2) {
+                document.getElementById('password-modal2').style.display = 'none';
+                localStorage.setItem('Register', 'true'); // Salvar em memória local
+            } else {
+                document.getElementById('error-message2').textContent = 'Senha incorreta. Você não tem permissão.';
+            }
+        }
+
+
+    </script>
+</body>
+</html>

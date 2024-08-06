@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações de Comissão</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        #digit4 {
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="container">
+            <div class="info-box">
+                <h2><i class="fab fa-tiktok"></i> Tiktoker:</h2>
+                <p id="tiktoker-name">Nome do Tiktoker</p>
+            </div>
+            <div class="info-box">
+                <h2><i class="fas fa-dollar-sign"></i> Comissão Total:</h2>
+                <p id="total-commission">R$0.00</p>
+            </div>
+            <div class="info-box">
+                <h2><i class="fas fa-ticket"></i> Cupom:</h2>
+                <p id="cupom">Cupom de Desconto</p>
+            </div>
+            <div class="info-box">
+                <h2><i class="fas fa-users"></i> Usuários que Usaram:</h2>
+                <ul id="user-list">
+                    <li>Usuário 1</li>
+                    <li>Usuário 2</li>
+                    <li>Usuário 3</li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="info-box">
+                <h2><i class="fa-solid fa-calculator"></i> Multiplicador: </h2>
+                <p id="multiplicador"></p>
+            </div>
+            <div class="info-box">
+                <h2><i class="fa-solid fa-hand-holding-dollar"></i> Pago pela última vez:</h2>
+                <p id="payment"></p>
+            </div>
+            <div class="info-box">
+                <h2><i class="fa-solid fa-wallet"></i> Forma de Pagamento:</h2>
+                <p id="pix"></p>
+            </div>
+            <div class="info-box">
+                <h2><i class="fa-solid fa-clipboard-list"></i> Quantas vezes usado:</h2>
+                <p id="qnts-cupom"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mini menu no canto superior direito -->
+    <div id="top-right-menu">
+        <button id="top-right-button"><i class="fa-solid fa-gear"></i></button>
+        <div class="submenu">
+            <a href="#" onclick="sPayment()">Solicitar Pagamento</a>
+            <a href="#" onclick="History()">Histórico de Pagamento</a>
+            <a href="#" onclick="Suporte()">Suporte</a>
+        </div>
+    </div>
+
+      <!-- Modal para senha -->
+      <div id="password-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2>Digite a Senha</h2>
+            <div id="password-inputs">
+                <input type="text" maxlength="1" id="digit1" oninput="moveFocus(event, 'digit2')" onclick="this.select()">
+                <input type="text" maxlength="1" id="digit2" oninput="moveFocus(event, 'digit3')" onclick="this.select()">
+                <input type="text" maxlength="1" id="digit3" oninput="moveFocus(event, 'digit4')" onclick="this.select()">
+                <input type="text" maxlength="1" id="digit4" class="space" oninput="moveFocus(event, 'digit5')" onclick="this.select()">
+                <input type="text" maxlength="1" id="digit5" oninput="moveFocus(event, 'digit6')" onclick="this.select()">
+                <input type="text" maxlength="1" id="digit6" onclick="this.select()">
+            </div>
+            <div class="error" id="error-message"></div>
+            <button onclick="checkPassword()">Enviar</button>
+        </div>
+    </div>
+
+        <!-- Modal de Carregamento -->
+<div id="loading-modal" class="modal">
+    <div class="loading-modal-content">
+        <div class="spinner"></div>
+        <div class="info">
+            <h2>Informações:</h2><br>
+            <p>1. Nossa equipe de ADM receberá sua solicitação por um canal privado.<br><br>
+                2. O pagamento pode ser liberado no dia da solicitação ou até 5 dias úteis.<br><br>
+                3. A sua comissão voltará para '0.00' quando paga.<br><br>
+                4. Jamais peça mais de 2 solicitações por mês.<br></p><br>
+                <button onclick="avancar()">Avançar <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+        <div class="historico">
+            <h2>Histórico de Pagamento:</h2>
+            <div class="historico-container">
+                <div class="historico-item">
+                    <!-- <div class="historico-details">
+                        <div class="historico-name"><i class="fa-solid fa-hashtag"></i></div>
+                        <div class="historico-data"></div>
+                        <div class="historico-valor">R$</div>
+                        <div class="historico-status"></div>
+                    </div> -->
+                    <p>Você não tem nenhum pagamento ainda.</p>
+                </div>
+                <!-- Adicione mais itens conforme necessário -->
+            </div><br><br><br><br>
+            <button class="close-btn" onclick="closeHistory()">Fechar</button>
+        </div>
+            
+        <p id="text"></p>
+    </div>
+</div>
+
+    <div class="particles"></div>
+    <script src="rapaizzin.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLORA BOT</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        footer {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="password-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2>Digite a Senha</h2>
+            <div id="password-inputs">
+                <input type="text" maxlength="1" id="digit1" oninput="moveFocus(event, 'digit2')" onclick="this.select()">
+                <input type="text" maxlength="1" id="digit2" oninput="moveFocus(event, 'digit3')" onclick="this.select()">
+                <input type="text" maxlength="1" id="digit3" oninput="moveFocus(event, 'digit4')" onclick="this.select()">
+                <input type="text" maxlength="1" id="digit4" onclick="this.select()">
+            </div>
+            <div class="error" id="error-message"></div>
+            <button onclick="checkPassword()">Enviar</button>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <h1>FLORA BOT</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Página Inicial</a></li>
+                    <li><a href="florabot.html">Flora Bot</a></li>
+                    <li><a href="termos.html">Termos de Serviço</a></li>
+                    <li><a href="privacidade.html">Política de Privacidade</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header><br>
+    <footer>
+        <p>&copy; 2024 FTF STORE. Todos os direitos reservados.</p>
+    </footer>
+    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const isAuthenticated = localStorage.getItem('isAuthenticated');
+            if (!isAuthenticated) {
+                document.getElementById('password-modal').style.display = 'flex';
+            }
+        });
+
+        function closeModal() {
+            document.getElementById('password-modal').style.display = 'none';
+        }
+
+        function moveFocus(event, nextFieldId) {
+            const input = event.target;
+            if (input.value.length >= input.maxLength) {
+                const nextField = document.getElementById(nextFieldId);
+                if (nextField) nextField.focus();
+            }
+        }
+
+        function checkPassword() {
+            const correctPassword = '1405';
+            const digit1 = document.getElementById('digit1').value;
+            const digit2 = document.getElementById('digit2').value;
+            const digit3 = document.getElementById('digit3').value;
+            const digit4 = document.getElementById('digit4').value;
+            const enteredPassword = digit1 + digit2 + digit3 + digit4;
+
+            if (enteredPassword === correctPassword) {
+                localStorage.setItem('isAuthenticated', 'true');
+                document.getElementById('password-modal').style.display = 'none';
+            } else {
+                document.getElementById('error-message').textContent = 'Senha incorreta. Você não tem permissão.';
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .loading-container {
+            text-align: center;
+        }
+        .loading-message {
+            font-size: 24px;
+            color: #3488b2;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <p class="loading-message">Limpando Dados...</p>
+    </div>
+    <script>
+        // Redirecionar para a página principal após um breve atraso
+        setTimeout(() => {
+            window.location.href = 'nfcliente.html';
+        }, 2000); // Atraso de 2 segundos
+    </script>
+</body>
+</html>
