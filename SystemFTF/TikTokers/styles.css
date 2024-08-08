@@ -192,17 +192,20 @@ body {
     cursor: pointer;
     color: #7a7a7a;
 }
-
-/* Media Queries para Responsividade */
+/* Estilos para dispositivos móveis */
 @media (max-width: 768px) {
+    body {
+        padding: 10px;
+        background: radial-gradient(circle, #1e1e1e, #000);
+    }
+
     .main-container {
         flex-direction: column;
         gap: 10px;
-        padding: 10px;
     }
 
     .container {
-        flex: 1 1 100%;
+        flex: 1;
         max-width: 100%;
         padding: 15px;
     }
@@ -234,15 +237,41 @@ body {
         padding: 8px 16px;
         font-size: 14px;
     }
+
+    .loading-modal-content {
+        width: 90%;
+        max-width: 350px;
+    }
+
+    .spinner {
+        width: 50px;
+        height: 50px;
+    }
+
+    .spinner:before {
+        top: 6px;
+        left: 6px;
+        right: 6px;
+        bottom: 6px;
+    }
 }
 
 @media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+
     .info-box h2 {
         font-size: 16px;
     }
 
     .info-box p, .info-box ul {
         font-size: 14px;
+    }
+
+    .modal-content {
+        width: 90%;
+        max-width: 280px;
     }
 
     .modal-content input {
@@ -255,7 +284,60 @@ body {
         padding: 6px 12px;
         font-size: 12px;
     }
+
+    .loading-modal-content {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .spinner {
+        width: 40px;
+        height: 40px;
+    }
+
+    .spinner:before {
+        top: 4px;
+        left: 4px;
+        right: 4px;
+        bottom: 4px;
+    }
+
+    #top-right-menu {
+        top: 10px;
+        right: 10px;
+    }
+
+    #top-right-button {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .submenu {
+        min-width: 180px;
+    }
+
+    .info {
+        font-size: 14px;
+    }
+
+    .historico {
+        margin: 10px auto;
+    }
+
+    .historico h2 {
+        font-size: 20px;
+    }
+
+    .historico-item {
+        padding: 10px;
+    }
+
+    .historico-name, .historico-data, .historico-valor, .historico-status {
+        font-size: 14px;
+    }
 }
+
 
 /* Estilos para o mini menu */
 #top-right-menu {
