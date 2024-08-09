@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     applyStoredTheme();
   });
 
-  // Função para enviar a mensagem
+// Função para enviar a mensagem
 function sendMessage() {
   const messageInput = document.getElementById('message-input');
   const messageText = messageInput.value.trim();
@@ -70,7 +70,7 @@ function sendMessage() {
     default:
       messageTemplate = `
         <div class="message member">
-            <div class="profile-photo">RP</div>
+            <div class="profile-photo">BG</div>
             <div class="message-content">
                 <p>${messageText}</p>
                 <small>${currentTime}</small>
@@ -104,14 +104,13 @@ function loadMessagesFromLocalStorage() {
   // Verifica se a mensagem do sistema já foi enviada
   if (!localStorage.getItem('systemMessageSent')) {
       const systemMessage = `
-      <br>
           <div class="system-message">
-              <p>The ticket was opened by <b>Rapaizzin</b> <i class="fa-solid fa-circle-check" style="color: var(--color-primary);"></i>.</p>
+              <p>The ticket was opened by <b>BaconsGirls</b> <i class="fa-solid fa-circle-check" style="color: var(--color-primary);"></i>.</p>
           </div>
           <div class="message member">
-              <div class="profile-photo">RP</div>
+              <div class="profile-photo">BG</div>
               <div class="message-content">
-                  <p>Olá, me chamo <b>Rapaizzin</b>! Gostaria de falar com um(a) administrador(a).</p>
+                  <p>Olá, me chamo <b>BaconsGirls</b>! Gostaria de falar com um(a) administrador(a).</p>
                   <small>Automática</small>
               </div>
           </div>
@@ -162,3 +161,5 @@ window.onload = () => {
   loadMessagesFromLocalStorage();
   checkURLForAdmin();
 };
+
+

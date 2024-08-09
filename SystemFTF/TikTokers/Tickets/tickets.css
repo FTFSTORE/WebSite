@@ -313,7 +313,7 @@ b{
     box-shadow: 0 0 0 3px rgba(108, 155, 207, 0.2); /* Sombra ao focar */
 }
 
-.menssagens {
+.menssages {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -324,22 +324,22 @@ b{
     scrollbar-color: var(--color-light) var(--color-background); /* Firefox */
 }
 
-/* Chrome, Edge, Safari */
-.menssagens::-webkit-scrollbar {
+/* Chrome Edge, Safari */
+.menssages::-webkit-scrollbar {
     width: 8px;
 }
 
-.menssagens::-webkit-scrollbar-track {
+.menssages::-webkit-scrollbar-track {
     background: var(--color-background); /* Cor de fundo do track */
     border-radius: var(--border-radius-1); /* Arredondamento dos cantos do track */
 }
 
-.menssagens::-webkit-scrollbar-thumb {
+.menssages::-webkit-scrollbar-thumb {
     background: var(--color-light); /* Cor da barra de rolagem */
     border-radius: var(--border-radius-1); /* Arredondamento dos cantos do thumb */
 }
 
-.menssagens::-webkit-scrollbar-thumb:hover {
+.menssages::-webkit-scrollbar-thumb:hover {
     background: var(--color-dark-variant); /* Cor da barra de rolagem ao passar o mouse */
 }
 
@@ -350,9 +350,9 @@ b{
     gap: 15px;
     padding: 15px;
     border-radius: var(--border-radius-2);
-    background-color: var(--color-background);
+    background-color: var(--color-light);
     position: relative;
-    max-width: 75%;
+    max-width: 40%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-size: 14px;
 }
@@ -399,9 +399,9 @@ b{
     box-shadow: 0 0 2rem var(--color-success);
 }
 
-.message.admin {
+.message.member {
     margin-left: auto;
-    background-color: var(--color-primary);
+    background-color: var(--color-white);
     color: var(--color-white);
     border: 1px solid var(--color-primary);
 }

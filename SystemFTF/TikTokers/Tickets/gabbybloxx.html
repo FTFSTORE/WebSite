@@ -29,7 +29,7 @@
 
                 <div class="profile">
                     <div class="info">
-                        <p>Olá, <b>GabbyBloxx</b></p>
+                        <p>Olá, <b>GabbyBloxx</b> <i class="fa-solid fa-circle-check" style="color: var(--color-primary);"></i></p>
                         <small class="text-muted">TikToker</small>
                     </div>
                     <div class="profile-photo">
@@ -42,23 +42,27 @@
         <div class="ticket-header">
             <div class="avatar">GB</div>
             <div class="info">
-                <h2>GabbyBloxx</h2>
-                <p>Online</p>
+                <h2>GabbyBloxx <i class="fa-solid fa-circle-check" style="color: var(--color-primary);"></i></h2>
+                <p>Online Agora</p>
             </div>
         </div>
-        <div class="chat-content">
-            <div class="menssagens">
-                <!-- <div class="message"> -->
-                    <!-- <div class="profile-photo">
-                        TM
+        <div class="chat-content" id="chat-content">
+            <div class="menssagens" id="menssages">
+                <br>
+                <!-- <div class="system-message">
+                    <p>The ticket was opened by <b>GabbyBloxx</b> <i class="fa-solid fa-circle-check" style="color: var(--color-primary);"></i>.</p>
+                </div>
+                <div class="message admin">
+                 <div class="profile-photo">
+                        GB
                     </div>
                     <div class="message-content">
-                        <p>Olá, gostaria de saber mais sobre a loja.</p>
-                        <small>10:00 AM</small>
+                        <p>Olá, me chamo <b>GabbyBloxx</b>! Gostaria de falar com um(a) administrador(a).</p>
+                        <small>Automática</small>
                     </div>
-                </div>
-                <div class="message admin"> -->
-                    <!-- <div class="profile-photo-adm">
+                </div> -->
+                <!-- <div class="message admin">
+                     <div class="profile-photo-adm">
                         ADM
                     </div>
                     <div class="message-content">
@@ -86,9 +90,7 @@
                 </div>
                 </div> -->
                 <br>
-                <div class="system-message">
-                    <p>The ticket was opened by <b>GabbyBloxx</b>.</p>
-                </div>
+                
             </div>
         <div class="inputs">
             <div class="select-div">
@@ -96,8 +98,8 @@
                 <option value="option1">Chat Massage</option>
             </select>
             </div>
-            <input type="text" placeholder="Digite sua Mensagem...">
-            <button class="material-icons-sharp">
+            <input type="text" id="message-input" placeholder="Digite sua Mensagem...">
+            <button class="material-icons-sharp" id="sendButton">
                 send
             </button>
             
