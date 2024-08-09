@@ -20,9 +20,10 @@ body {
 }
 
 .container {
-    background: linear-gradient(145deg, #2b2b2b, #1c1c1c);
+    background-color: linear-gradient(145deg, #2b2b2b, #1c1c1c);
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
     padding: 25px;
     flex: 1 1 100%; /* Permite que cada contêiner ocupe 100% da largura disponível */
     max-width: 450px;
@@ -101,9 +102,14 @@ body {
     position: absolute;
     border-radius: 50%;
     background: rgba(52, 136, 178, 0.6);
+    box-shadow: 0 0 2rem rgba(52, 136, 178, 0.6);
     pointer-events: none;
     animation: particleAnimation 10s linear infinite;
     opacity: 0;
+}
+
+.createTicket {
+    display: none;
 }
 
 @keyframes particleAnimation {

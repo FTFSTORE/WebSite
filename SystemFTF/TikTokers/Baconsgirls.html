@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informações de Comissão</title>
+    <title>BaconsGirls Panel</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -57,6 +57,7 @@
         <div class="submenu">
             <a href="#" onclick="sPayment()">Solicitar Pagamento</a>
             <a href="#" onclick="History()">Histórico de Pagamento</a>
+            <a href="#" onclick="createTicket()">Criar Ticket</a>
             <a href="#" onclick="Suporte()">Suporte</a>
         </div>
     </div>
@@ -104,6 +105,25 @@
                 <!-- Adicione mais itens conforme necessário -->
             </div><br><br><br><br>
             <button class="close-btn" onclick="closeHistory()">Fechar</button>
+        </div>
+
+        <div class="createTicket">
+            <h2>Criar Ticket</h2>
+            <p>Olá, BaconsGirls! Você está na aba de criação de ticket.</p>
+            <div class="info-box">
+                <h2><i class="fa-solid fa-shield"></i> Proteção de Dados:</h2>
+                <p>Seus dados serão automaticamente encaminhados para administradores selecionados.</p>
+            </div>
+            <div class="info-box">
+                <h2><i class="fa-regular fa-message"></i> Mensagens:</h2>
+                <p>Você poderá falar com nossos administradores em tempo real.</p>
+            </div>
+            <div class="info-box">
+                <h2><i class="fa-solid fa-cloud-arrow-up"></i> Conversas:</h2>
+                <p>Suas conversas serão salvas na nuvem para um melhor atendimento no seu próximo ticket.</p>
+            </div>
+                
+            <button onclick="CriarTicket()">Continuar</button>
         </div>
             
         <p id="text"></p>

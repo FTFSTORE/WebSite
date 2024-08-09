@@ -1,0 +1,497 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+    --color-primary: #6C9BCF;
+    --color-danger: #3488b2;
+    --color-success: #1B9C85;
+    --color-warning: #F7D060;
+    --color-white: #fff;
+    --background-system-message: #f7f7f7;
+    --color-info-dark: #7d8da1;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+.dark-mode-variables{
+    --color-background: #181a1e;
+    --color-white: #202528;
+    --color-dark: #edeffd;
+    --color-dark-variant: #a3bdcc;
+    --background-system-message: #15191b;
+    --color-light: rgba(0, 0, 0, 0.4);
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: 0;
+    border: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 14px;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    user-select: none;
+    overflow: hidden;
+    color: var(--color-dark);
+    background-color: var(--color-background);
+}
+
+a{
+    color: var(--color-dark);
+}
+
+img{
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+h1{
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+h2{
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+h3{
+    font-weight: 500;
+    font-size: 0.87rem;
+}
+
+small{
+    font-size: 0.76rem;
+}
+
+p{
+    color: var(--color-dark-variant);
+}
+
+b{
+    color: var(--color-dark);
+}
+
+.text-muted{
+    color: var(--color-info-dark);
+}
+
+.primary{
+    color: var(--color-primary);
+}
+
+.danger{
+    color: var(--color-danger);
+}
+
+.success{
+    color: var(--color-success);
+}
+
+.warning{
+    color: var(--color-warning);
+}
+
+.right-section{
+    margin-top: 1.4rem;
+    margin-right: 1.7rem;
+}
+
+.right-section .nav{
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+}
+
+.right-section .nav button{
+    display: none;
+}
+
+.right-section .dark-mode{
+    background-color: var(--color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.6rem;
+    width: 4.2rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+}
+
+.right-section .dark-mode span{
+    font-size: 1.2rem;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-section .dark-mode span.active{
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: var(--border-radius-1);
+}
+
+.right-section .nav .profile{
+    display: flex;
+    gap: 2rem;
+    text-align: right;
+}
+
+.right-section .nav .profile .profile-photo{
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--color-dark);
+    color: var(--color-primary);
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border: 2px dashed var(--color-primary);
+}
+
+.right-section .user-profile{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.right-section .user-profile:hover{
+    box-shadow: none;
+}
+
+.right-section .user-profile img{
+    width: 11rem;
+    height: auto;
+    margin-bottom: 0.8rem;
+    border-radius: 50%;
+}
+
+.right-section .user-profile h2{
+    margin-bottom: 0.2rem;
+}
+
+
+.ticket {
+    padding: var(--card-padding);
+}
+
+.ticket-header {
+    gap: 1.5rem;
+    display: flex;
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+}
+
+.ticket-header .avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-dark);
+    display: flex;
+    align-items: center;
+    color: var(--color-primary);
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.ticket .inputs {
+    position: absolute;
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+    top: 88%;
+    background-color: var(--color-background);
+    padding: var(--card-padding);
+    border-radius: 0 0 15px 15px;
+    left: 1px;
+}
+
+.ticket .inputs input {
+    padding: 15px 20px;
+    min-width: 83vw;
+    width: 100%;
+    border-radius: 13px;
+    background-color: var(--color-background);
+    color: var(--color-dark);
+    box-shadow: var(--box-shadow);
+    border: 2px dashed var(--color-dark-variant);
+    transition: .5s ease-in-out;
+    cursor: pointer;
+}
+
+.ticket .inputs input:hover, .ticket .inputs input:focus{
+    box-shadow: none;
+}
+
+
+.ticket .inputs button{
+    padding: 13px;
+    border-radius: 50%;
+    background-color: var(--color-background);
+    color: var(--color-dark);
+    font-size: 18px;
+    box-shadow: var(--box-shadow);
+    border: 2px dashed var(--color-dark-variant);
+    transition: .5s ease-in-out;
+}
+
+.ticket .inputs button:hover {
+    box-shadow: 0 0 1rem var(--color-success);
+}
+
+.ticket .inputs label {
+    font-size: 13px;
+}
+
+.ticket .inputs select{
+    width: 100%;
+    min-width: 10rem; /* Altera a largura máxima */
+    background-color: var(--color-white); /* Usando a cor de fundo branco padrão */
+    padding: 10px 8px; /* Usando o padding definido no root */
+    border-radius: var(--border-radius-1); /* Usando o border-radius padrão */
+    color: var(--color-dark); /* Cor do texto */
+    border: 1px solid var(--color-light); /* Borda sutil */
+    box-shadow: var(--box-shadow); /* Adiciona uma sombra para destacar */
+    font-size: 14px; /* Tamanho da fonte */
+    font-weight: 500; /* Peso da fonte */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
+
+    /* Adiciona uma seta customizada */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23677483" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px) center;
+    background-size: 12px;
+    cursor: pointer;
+}
+
+.tickets-inputs select:hover {
+    background-color: var(--color-background); /* Cor de fundo ao passar o mouse */
+}
+
+.ticket .inputs select:focus {
+    border-color: var(--color-primary); /* Cor da borda ao focar */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(108, 155, 207, 0.2); /* Sombra ao focar */
+}
+
+.menssagens {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    max-height: 550px;
+    overflow-y: auto;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--color-light) var(--color-background); /* Firefox */
+}
+
+/* Chrome, Edge, Safari */
+.menssagens::-webkit-scrollbar {
+    width: 8px;
+}
+
+.menssagens::-webkit-scrollbar-track {
+    background: var(--color-background); /* Cor de fundo do track */
+    border-radius: var(--border-radius-1); /* Arredondamento dos cantos do track */
+}
+
+.menssagens::-webkit-scrollbar-thumb {
+    background: var(--color-light); /* Cor da barra de rolagem */
+    border-radius: var(--border-radius-1); /* Arredondamento dos cantos do thumb */
+}
+
+.menssagens::-webkit-scrollbar-thumb:hover {
+    background: var(--color-dark-variant); /* Cor da barra de rolagem ao passar o mouse */
+}
+
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    border-radius: var(--border-radius-2);
+    background-color: var(--color-background);
+    position: relative;
+    max-width: 75%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+
+.product {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    border-radius: var(--border-radius-2);
+    background-color: var(--background-system-message);
+    position: relative;
+    max-width: 75%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    color: var(--color-dark);
+}
+.tag {
+    background-color: var(--color-primary);
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.product .product-img img{
+    width: 200px;
+    min-height: 200px;
+    border-radius: 10px;
+}
+
+.product button {
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: var(--color-success);
+    color: var(--color-white);
+    font-size: 18px;
+    transition: .5s ease-in-out;
+}
+
+.product button:hover{
+    box-shadow: 0 0 2rem var(--color-success);
+}
+
+.message.admin {
+    margin-left: auto;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: 1px solid var(--color-primary);
+}
+
+.system-message{
+    background-color: transparent;
+    text-align: center;
+}
+
+.system-message button {
+    padding: 7px;
+    border-radius: 5px;
+    border: 2px dashed var(--color-success);
+    color: var(--color-dark);
+    background-color: var(--color-white);
+    margin-top: 10px;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+}
+.system-message button:hover{
+    transform: translateY(-2px);
+}
+
+.message-content {
+    flex: 1;
+}
+
+.message-content p {
+    margin: 0;
+    line-height: 1.5;
+    color: var(--color-dark);
+}
+
+.message-content small {
+    display: block;
+    color: var(--color-dark-variant);
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.message .profile-photo {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 50%;
+    background-color: var(--color-dark);
+    color: var(--color-primary);
+}
+
+.message.admin .profile-photo-adm {
+    width: 41px;
+    height: 41px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 50%;
+    background-color: var(--color-dark);
+    color: var(--color-white);
+}
+
+/* Ajusta o estilo quando em modo escuro */
+.dark-mode .menssagens .message {
+    background-color: var(--color-dark);
+    border-color: var(--color-dark-variant);
+}
+
+.dark-mode .menssagens .message.admin {
+    background-color: var(--color-success);
+    color: var(--color-white);
+    border-color: var(--color-success);
+}
+
+.dark-mode .menssagens .message-content p {
+    color: var(--color-light);
+}
+
+.dark-mode .menssagens .message-content small {
+    color: var(--color-dark-variant);
+}
+
+@media screen and (max-width: 768px) {
+    .ticket .inputs select {
+        display: none;
+    }
+
+    .ticket .inputs input {
+        min-width: 70vw;
+    }
+}

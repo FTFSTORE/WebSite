@@ -3,14 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rapaizzin Panel</title>
+    <title>GabbyBloxx Panel</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        #digit4 {
-            margin-left: 15px;
-        }
-    </style>
 </head>
 <body>
     <div class="main-container">
@@ -56,8 +51,8 @@
         </div>
     </div>
 
-    <!-- Mini menu no canto superior direito -->
-    <div id="top-right-menu">
+      <!-- Mini menu no canto superior direito -->
+      <div id="top-right-menu">
         <button id="top-right-button"><i class="fa-solid fa-gear"></i></button>
         <div class="submenu">
             <a href="#" onclick="sPayment()">Solicitar Pagamento</a>
@@ -67,8 +62,8 @@
         </div>
     </div>
 
-      <!-- Modal para senha -->
-      <div id="password-modal" class="modal">
+     <!-- Modal para senha -->
+     <div id="password-modal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal()">&times;</span>
             <h2>Digite a Senha</h2>
@@ -76,16 +71,14 @@
                 <input type="text" maxlength="1" id="digit1" oninput="moveFocus(event, 'digit2')" onclick="this.select()">
                 <input type="text" maxlength="1" id="digit2" oninput="moveFocus(event, 'digit3')" onclick="this.select()">
                 <input type="text" maxlength="1" id="digit3" oninput="moveFocus(event, 'digit4')" onclick="this.select()">
-                <input type="text" maxlength="1" id="digit4" class="space" oninput="moveFocus(event, 'digit5')" onclick="this.select()">
-                <input type="text" maxlength="1" id="digit5" oninput="moveFocus(event, 'digit6')" onclick="this.select()">
-                <input type="text" maxlength="1" id="digit6" onclick="this.select()">
+                <input type="text" maxlength="1" id="digit4" onclick="this.select()">
             </div>
             <div class="error" id="error-message"></div>
             <button onclick="checkPassword()">Enviar</button>
         </div>
     </div>
 
-        <!-- Modal de Carregamento -->
+    <!-- Modal de Carregamento -->
 <div id="loading-modal" class="modal">
     <div class="loading-modal-content">
         <div class="spinner"></div>
@@ -116,7 +109,7 @@
 
         <div class="createTicket">
             <h2>Criar Ticket</h2>
-            <p>Olá, Rapaizzin! Você está na aba de criação de ticket.</p>
+            <p>Olá, GabbyBloxx! Você está na aba de criação de ticket.</p>
             <div class="info-box">
                 <h2><i class="fa-solid fa-shield"></i> Proteção de Dados:</h2>
                 <p>Seus dados serão automaticamente encaminhados para administradores selecionados.</p>
@@ -137,7 +130,12 @@
     </div>
 </div>
 
+
     <div class="particles"></div>
-    <script src="rapaizzin.js"></script>
+    <script>
+      
+    </script>
+
+    <script src="gabyybloxx.js"></script>
 </body>
 </html>

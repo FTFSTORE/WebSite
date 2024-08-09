@@ -1,12 +1,12 @@
  // Simulando dados que podem ser carregados dinamicamente
  const data = {
     baseCommission: 0.00,
-    tiktokerName: '@BaconsGirls_',
+    tiktokerName: '@gabbybloxx',
     cupomBase: '....',
     users: [],
     PaymentRequest: 'Sem Data',
     FormaPayment: `<i class="fa-brands fa-pix"></i> Pix`,
-    Multiplicador: 'R$2.50 x Usuário'
+    Multiplicador: 'R$2.00 x Usuário'
 };
 
 // Variável para armazenar a comissão total paga
@@ -204,6 +204,44 @@ function History() {
     }, 5500); // 4000 milissegundos = 4 segundos
 }
 
+function createTicket() {
+    // Exibir o modal de carregamento
+    document.getElementById('loading-modal').style.display = 'flex';
+    document.getElementById('text').textContent = 'Conectando ao Servidor...'
+    // Simulação de carregamento (substitua isso com sua lógica de jogo)
+    setTimeout(() => {
+        document.getElementById('text').textContent = 'Pronto.';
+    }, 5000); // 4000 milissegundos = 4 segundos
+
+    // Simulação de carregamento (substitua isso com sua lógica de jogo)
+    setTimeout(() => {
+        document.querySelector('.spinner').style.display = 'none';
+        document.querySelector('.createTicket').style.display = 'block';
+        document.getElementById('text').style.display = 'none';
+    }, 5500); // 4000 milissegundos = 4 segundos
+}
+
+function CriarTicket() {
+    document.querySelector('.createTicket').style.display = 'none';
+    document.querySelector('.spinner').style.display = 'block';
+    document.getElementById('text').style.display = 'block';
+    document.getElementById('text').textContent = 'Criando  Ticket...';
+     // Simulação de carregamento (substitua isso com sua lógica de jogo)
+     setTimeout(() => {
+         document.getElementById('text').textContent = 'Recebendo seus dados...';
+    }, 4000); // 4000 milissegundos = 4 segundos
+    // Simulação de carregamento (substitua isso com sua lógica de jogo)
+    setTimeout(() => {
+         document.getElementById('text').textContent = 'Protegendo dados...';
+   }, 5000); // 4000 milissegundos = 4 segundos
+   setTimeout(() => {
+    document.getElementById('text').textContent = 'Ticket Criado.';
+}, 7000); // 4000 milissegundos = 4 segundos
+setTimeout(() => {
+    window.location.href = './Tickets/gabbybloxx.html';
+}, 7800); // 4000 milissegundos = 4 segundos
+}
+
 function closeHistory() {
     document.querySelector('.historico').style.display = 'none';
     document.querySelector('.spinner').style.display = 'block';
@@ -297,42 +335,4 @@ function sendSuporte() {
     .catch(error => {
         console.error('Erro ao enviar webhook:', error);
     });
-}
-
-function createTicket() {
-    // Exibir o modal de carregamento
-    document.getElementById('loading-modal').style.display = 'flex';
-    document.getElementById('text').textContent = 'Conectando ao Servidor...'
-    // Simulação de carregamento (substitua isso com sua lógica de jogo)
-    setTimeout(() => {
-        document.getElementById('text').textContent = 'Pronto.';
-    }, 5000); // 4000 milissegundos = 4 segundos
-
-    // Simulação de carregamento (substitua isso com sua lógica de jogo)
-    setTimeout(() => {
-        document.querySelector('.spinner').style.display = 'none';
-        document.querySelector('.createTicket').style.display = 'block';
-        document.getElementById('text').style.display = 'none';
-    }, 5500); // 4000 milissegundos = 4 segundos
-}
-
-function CriarTicket() {
-    document.querySelector('.createTicket').style.display = 'none';
-    document.querySelector('.spinner').style.display = 'block';
-    document.getElementById('text').style.display = 'block';
-    document.getElementById('text').textContent = 'Criando  Ticket...';
-     // Simulação de carregamento (substitua isso com sua lógica de jogo)
-     setTimeout(() => {
-         document.getElementById('text').textContent = 'Recebendo seus dados...';
-    }, 4000); // 4000 milissegundos = 4 segundos
-    // Simulação de carregamento (substitua isso com sua lógica de jogo)
-    setTimeout(() => {
-         document.getElementById('text').textContent = 'Protegendo dados...';
-   }, 5000); // 4000 milissegundos = 4 segundos
-   setTimeout(() => {
-    document.getElementById('text').textContent = 'Ticket Criado.';
-}, 7000); // 4000 milissegundos = 4 segundos
-setTimeout(() => {
-    window.location.href = './Tickets/Baconsgirls.html';
-}, 7800); // 4000 milissegundos = 4 segundos
 }
