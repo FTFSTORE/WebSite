@@ -2,7 +2,7 @@
  const data = {
     baseCommission: 0.00,
     tiktokerName: '@BaconsGirls_',
-    cupomBase: '....',
+    cupomBase: 'GABYMAH',
     users: [],
     PaymentRequest: 'Sem Data',
     FormaPayment: `<i class="fa-brands fa-pix"></i> Pix`,
