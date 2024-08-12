@@ -279,6 +279,23 @@ b{
     font-size: 13px;
 }
 
+.ticket .inputs .select-div {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    min-width: 10rem;
+    height: 40px;
+}
+
+.ticket .inputs .select-div .select-box {
+    border: none;
+    appearance: none;
+    padding: 0 30px 0 15px;
+    width: 100%;
+    color: var(--color-dark);
+    background-color: var(--color-white);
+}
+
 .ticket .inputs select{
     width: 100%;
     min-width: 10rem; /* Altera a largura máxima */
@@ -299,7 +316,7 @@ b{
     background-image: url('data:image/svg+xml;utf8,<svg fill="%23677483" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
     background-repeat: no-repeat;
     background-position: calc(100% - 10px) center;
-    background-size: 12px;
+    background-size: 17px;
     cursor: pointer;
 }
 
@@ -312,6 +329,7 @@ b{
     outline: none;
     box-shadow: 0 0 0 3px rgba(108, 155, 207, 0.2); /* Sombra ao focar */
 }
+
 
 .menssages {
     display: flex;
@@ -356,6 +374,63 @@ b{
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-size: 14px;
 }
+
+.feed-back {
+    padding: 15px;
+    border-radius: 8px;
+    background-color: var(--color-background);
+    box-shadow: var(--box-shadow);
+    color: var(--color-dark);
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+}
+
+.feedback-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.stars {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.stars span {
+    color: #ccc; /* Cor das estrelas não selecionadas */
+    transition: color 0.3s;
+}
+
+.stars span.selected {
+    color: #ffcc00; /* Cor das estrelas selecionadas */
+}
+
+.feedback-time {
+    margin-top: 10px;
+}
+
+.typing::after {
+    content: '...';
+    display: inline-block;
+    animation: dots 1.5s steps(3, end) infinite;
+    transition: all .5s ease-in-out;
+  }
+  
+  @keyframes dots {
+    0%, 20% {
+      content: '';
+    }
+    40% {
+      content: '.';
+    }
+    60% {
+      content: '..';
+    }
+    80%, 100% {
+      content: '...';
+    }
+  }
+  
 
 .product {
     margin-left: auto;
@@ -494,4 +569,121 @@ b{
     .ticket .inputs input {
         min-width: 70vw;
     }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+    --color-primary: #6C9BCF;
+    --color-danger: #3488b2;
+    --color-success: #1B9C85;
+    --color-warning: #F7D060;
+    --color-white: #fff;
+    --background-system-message: #f7f7f7;
+    --color-info-dark: #7d8da1;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+.dark-mode-variables{
+    --color-background: #181a1e;
+    --color-white: #202528;
+    --color-dark: #edeffd;
+    --color-dark-variant: #a3bdcc;
+    --background-system-message: #15191b;
+    --color-light: rgba(0, 0, 0, 0.4);
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: 0;
+    border: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 14px;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    user-select: none;
+    overflow-x: hidden;
+    color: var(--color-dark);
+    background-color: var(--color-background);
+}
+
+a{
+    color: var(--color-dark);
+}
+
+img{
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+h1{
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+h2{
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+h3{
+    font-weight: 500;
+    font-size: 0.87rem;
+}
+
+small{
+    font-size: 0.76rem;
+}
+
+p{
+    color: var(--color-dark-variant);
+}
+
+b{
+    color: var(--color-dark);
+}
+
+.text-muted{
+    color: var(--color-info-dark);
+}
+
+.primary{
+    color: var(--color-primary);
+}
+
+.danger{
+    color: var(--color-danger);
+}
+
+.success{
+    color: var(--color-success);
+}
+
+.warning{
+    color: var(--color-warning);
 }

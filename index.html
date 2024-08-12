@@ -1,138 +1,213 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FTF STORE</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>FTF STORE</title>
 </head>
 <body>
-    <!-- Menu -->
-    <nav id="menu">
-        <div class="menu-container">
-            <div class="menu-logo">FTF STORE</div>
-            <ul class="menu-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+
+    <div class="menu">
+        <div class="left">
+            <img src="logo.png" style="width: 50px; height: 50px; border-radius: 50%;">
+        </div>
+        <div class="center">
+            <li>
+                <a href="#home">
+                    <span class="icon"><i class="fa-solid fa-house"></i></span>
+                    <span class="text">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="#Products">
+                    <span class="icon"><i class="fa-solid fa-dolly"></i></span>
+                    <span class="text">Products</span>
+                </a>
+            </li>
+            <!-- <li>
+                <a href="">
+                    <span class="icon"><i class="fa-solid fa-book"></i></span>
+                    <span class="text">About</span>
+                </a>
+            </li> -->
+        </div>
+        <div class="right">
+<!-- Link para abrir o modal de notificações -->
+<a id="notifications" onclick="openNotifications()" style="display: none;">
+    <i class="fa-solid fa-bell"></i> 
+    <span id="mensage-counter">0</span>
+</a>
+
+            <a href="https://discord.gg/VsyRCxhWMs" id="discord-btn">
+                <span class="icon"><i class="fa-brands fa-discord"></i></span>
+                <!-- <span class="text">Server Discord</span> -->
+            </a>
+            <a href="https://www.instagram.com/ftfstore._" id="instagram-btn">
+                <span class="icon"><i class="fa-brands fa-instagram"></i></span>
+                <!-- <span class="text">Instagram</span> -->
+            </a>
+        </div>
+    </div>
+
+    <!-- Modal de Notificações -->
+<div id="notifications-modal" class="notifications-modal">
+    <div class="notifications-modal-content">
+        <span id="close-notifications" class="close-btn-noti">&times;</span>
+        <h2>Notificações</h2>
+        <div id="notifications-list">
+            <ul class="notis">
+                <!-- <li>
+                    <h1><b>Piñata Set</b></h1>
+                    <p>O produto <b>Piñata Set</b> chegou ao stock.</p>
+                    <div class="stock-info">
+                        <span id="counter">1x</span> no estoque
+                    </div>
+                </li> -->
+                <li>
+                    <h1>Você não tem notificações.</h1>
+                    <p>Quando uma notificação aparecer, você saberá.</p>
+                </li>
             </ul>
-            <button id="theme-toggle" aria-label="Toggle Theme">
-                <span class="material-icons">mode_night</span>
-            </button>
+            
         </div>
-    </nav>
-
-    <!-- Barra de Pesquisa -->
-    <div class="search-bar">
-        <input type="text" placeholder="Pesquisar produtos...">
-    </div>
-
-    <main>
-        <!-- Seção Hero -->
-        <section class="hero">
-            <h1>Bem-vindo à FTF STORE!</h1>
-            <p>Explore nossos produtos incríveis e únicos.</p>
-            <button class="cta-button" onclick="showLoadingModal()">Explore Agora</button>
-        </section>
-
-        <!-- Seção de Produtos -->
-        <section class="products">
-            <h2>Nossos Produtos</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <h3>Produto 1</h3>
-                    <p>Descrição do produto 1.</p>
-                    <button class="product-button">Saiba Mais</button>
-                </div>
-                <div class="product-card">
-                    <h3>Produto 2</h3>
-                    <p>Descrição do produto 2.</p>
-                    <button class="product-button">Saiba Mais</button>
-                </div>
-                <div class="product-card">
-                    <h3>Produto 3</h3>
-                    <p>Descrição do produto 3.</p>
-                    <button class="product-button">Saiba Mais</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção de Testemunhos -->
-        <section class="testimonials">
-            <h2>O que nossos clientes dizem</h2>
-            <div class="testimonial-card">
-                <p>"A FTF STORE oferece produtos incríveis! Atendimento excepcional e entrega rápida."</p>
-                <div class="author">João Silva</div>
-            </div>
-            <div class="testimonial-card">
-                <p>"Adorei a experiência de compra. O site é fácil de usar e os produtos são de alta qualidade."</p>
-                <div class="author">Maria Oliveira</div>
-            </div>
-        </section>
-    </main>
-
-  <!-- Botão Flutuante de Contato -->
-<button class="floating-contact" aria-label="Contato">
-    <i class="fas fa-comments"></i>
-</button>
-
-<!-- Chat Bot -->
-<div class="chat-container">
-    <div class="chat-header">
-        <div class="chat-title">
-            <span class="bot-name">FLORA BOT <i class="fas fa-check-circle verified"></i></span>
-            <span class="status">Online</span>
-        </div>
-        <button class="chat-close" aria-label="Fechar Chat"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="chat-body">
-        <div class="message bot-message">Olá! Como posso ajudar você hoje?</div>
-        <div class="message user-message">Quais são os seus produtos?</div>
-        <div class="message bot-message">Temos uma variedade incrível de produtos. Confira nossa seção de produtos!</div>
-        <!-- Adicione mais mensagens aqui -->
-    </div>
-    <div class="chat-footer">
-        <input type="text" placeholder="Digite sua mensagem...">
-        <button><i class="fas fa-paper-plane"></i></button>
     </div>
 </div>
 
-    <!-- Rodapé -->
-    <footer>
-        <p>&copy; 2024 FTF STORE. Todos os direitos reservados.</p>
-        <div class="footer-links">
-            <a href="#privacy">Política de Privacidade</a>
-            <a href="#terms">Termos de Serviço</a>
-        </div>
-    </footer>
-
-    <!-- Loading Modal -->
-    <div id="loading-modal" class="modal">
-        <div class="modal-content">
-            <h2>Estamos Preparando Tudo Para Você!</h2>
-            <div class="loader-container">
-                <div class="loader"></div>
-                <div class="loader-text">Aguarde...</div>
+    <section id="home">
+        <div class="content">
+            <img src="homeimg.svg" class="image"><br>
+            <div class="text">
+                <h1>Bem Vindo(a)</h1>
+                <p>Conheça a FTF STORE, uma loja dedicada a vender coisas do Flee The Facility. Amplie seu inventário do FTF comprando itens do nosso catálogo, compre de forma segura com a FTF STORE. <br><br>Nossa loja compra itens de usuários para revenda, caso tenha interesse, entre no nosso servidor do discord ou nos chame no instagram.</p>
+                <a href="#Products">
+                    Saiba Mais
+                    <span class="icon"><i class="fa fa-arrow-right"></i></span>
+                </a>
             </div>
         </div>
+    </section>
+    
+    <section id="Products">
+        <h1>Alguns Produtos</h1><br>
+        <div class="produtos-wrapper">
+            <div class="produtos">
+                <div class="produto">
+                    <div class="tag-famosa">Best Seller <i class="fa-solid fa-meteor"></i></div>
+                    <img src="./img/produto1.png" alt="Produto 1">
+                    <p id="categoria">Birthday</p>
+                    <h2>Strawberry Basket</h2>
+                    <p>A mais famosa <b>"Cesta de Morango"</b> está em nosso catálogo, venha já conferir.</p>
+                    <p>Stock: 1x</p>
+                    <span>R$ 28,00</span>
+                    <br><br>
+                    <a id="disable">Me avise <i class="fa-solid fa-bell"></i></a>
+                </div>
+                <div class="produto">
+                    <img src="./img/produto2.png" alt="Produto 1">
+                    <p id="categoria">Birthday</p>
+                    <h2>Blueberry Basket</h2>
+                    <p>A mais famosa <b>"Cesta de Blueberry"</b> está em nosso catálogo, venha já conferir.</p>
+                    <p>Stock: 1x</p>
+                    <span>R$ 26,00</span>
+                    <br><br>
+                    <a id="disable">Me avise <i class="fa-solid fa-bell"></i></a>
+                </div>
+                <div class="produto">
+                    <div class="tag-new">NEW <i class="fa-solid fa-star"></i></div>
+                    <img src="./img/produto3.png" alt="Produto 1">
+                    <p id="categoria">Birthday</p>
+                    <h2>Lemonade Basket</h2>
+                    <p>A mais famosa <b>"Cesta de Limonada"</b> está em nosso catálogo, venha já conferir.</p>
+                    <p>Stock: 1x</p>
+                    <span>R$ 26,00</span>
+                    <br><br>
+                    <a id="disable">Me avise <i class="fa-solid fa-bell"></i></a>
+                </div>
+                <div class="produto">
+                    <img src="./img/produto4.png" alt="Produto 1">
+                    <p id="categoria">Birthday</p>
+                    <h2>Piñata Set</h2>
+                    <p>A mais famosa <b>"Set de Pinhata"</b> está em nosso catálogo, venha já conferir.</p><br>
+                    <p>Stock: 0x</p>
+                    <span>R$ 22,50</span>
+                    <br><br>
+                    <a id="notify-link" onclick="aviseMe()">Me avise <i class="fa-solid fa-bell"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+<div id="custom-alert" class="custom-alert">
+    <div class="custom-alert-content">
+        <span id="alert-message"></span>
+        <button id="close-alert" class="close-btn">Fechar</button>
     </div>
+</div>
+
+    
+    <!-- Chat Icon -->
+<!-- <div class="chat-icon">
+    <i class="fa-solid fa-comments"></i>
+</div> -->
+
+<!-- Chat Box -->
+<!-- <div class="chat-box">
+    <div class="chat-header">
+        <img src="logo.png" style="width: 40px; height: 40px; border-radius: 50%;">
+        <h2>FTF STORE</h2>
+        <button class="close-chat">&times;</button>
+    </div>
+    <div class="chat-body">
+        <!-- Messages will be dynamically inserted here -->
+    <!-- </div>
+    <div class="chat-footer">
+        <input type="text" placeholder="Digite sua mensagem..." />
+        <button type="button"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+</div>  -->
+
+<div class="fullscreen-text" id="fullscreenText">
+    <h1>Bem Vindo(a)</h1>
+    <p>A melhor loja de FTF do <b>BRASIL</b>!</p>
+</div>
+    
+    <div class="particles">
+        <!-- Particles are added programmatically via JavaScript for better control -->
+    </div>
+    <script>
+        // JavaScript to create particles
+        function createParticles() {
+            const container = document.querySelector('.particles');
+            for (let i = 10; i < 250; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = `${Math.random() * 20 + 5}px`;
+                particle.style.height = particle.style.width;
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                particle.style.opacity = `${Math.random() * 0.5 + 0.3}`;
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // JavaScript to handle fullscreen text animation
+        window.addEventListener('load', () => {
+            const fullscreenText = document.getElementById('fullscreenText');
+            fullscreenText.style.opacity = 1;
+            setTimeout(() => {
+                fullscreenText.style.opacity = 0;
+                setTimeout(() => {
+                    fullscreenText.style.display = 'none';
+                }, 1000); // match transition duration
+            }, 5000); // display for 5 seconds
+        });
+        </script>
 
     <script src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // URL para a qual você deseja redirecionar
-            const redirectUrl = 'https://www.exemplo.com';
-    
-            // Redireciona após 2 segundos (2000 milissegundos)
-            setTimeout(() => {
-                window.location.href = redirectUrl;
-            }, 2000);
-        });
-    </script>
-    
 </body>
 </html>

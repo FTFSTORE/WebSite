@@ -67,6 +67,13 @@ function sendMessage() {
         </div>
       `;
       break;
+      case 'close-ticket':
+      messageTemplate = `
+        <div class="system-message">
+        <p>Ticket was closed due to <b>inactivity</b>.</p>
+        </div>
+      `;
+      break;
     default:
       messageTemplate = `
         <div class="message member">
@@ -150,11 +157,28 @@ function checkURLForAdmin() {
           adminOption.textContent = 'Admin Message';
           selectElement.appendChild(adminOption);
       }
+
+      // Adicionar opção "Admin Message" se não estiver presente
+      if (![...selectElement.options].some(option => option.value === 'close-ticket')) {
+        const closedOption = document.createElement('option');
+        closedOption.value = 'close-ticket';
+        closedOption.textContent = 'Close Ticket';
+        selectElement.appendChild(closedOption);
+    }
   }
 }
 
 // Adicionar evento ao botão de envio
 document.getElementById('sendButton').addEventListener('click', sendMessage);
+
+// Adicionar evento de teclado para enviar mensagem ao pressionar "Enter"
+document.getElementById('message-input').addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+    console.log('Enter key pressed'); // Depuração
+    sendMessage();
+    event.preventDefault(); // Evita que o "Enter" cause uma nova linha
+  }
+});
 
 // Carregar mensagens e verificar a URL ao carregar a página
 window.onload = () => {
@@ -163,3 +187,16 @@ window.onload = () => {
 };
 
 
+// Função para alterar o texto quando o input ganhar foco
+document.getElementById('message-input').addEventListener('focus', () => {
+  const statusText = document.getElementById('status-text');
+  statusText.innerText = 'Digitando';
+  statusText.classList.add('typing');
+});
+
+// Função para restaurar o texto quando o input perder foco
+document.getElementById('message-input').addEventListener('blur', () => {
+  const statusText = document.getElementById('status-text');
+  statusText.innerText = 'Online';
+  statusText.classList.remove('typing');
+});
