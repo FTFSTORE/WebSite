@@ -8,91 +8,147 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-            color: #333;
-            background-color: #f4f4f4;
+            color: #fff;
+            background-color: #0c192c;
         }
         .container {
-            background-color: #fff;
+            background-color: #0000006f;
+            backdrop-filter: blur(10px);
             max-width: 700px;
             margin: 0 auto;
-            border: 2px solid #3488b2;
+            border: 2px dashed #ffffff98;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            box-shadow: 0 0 20px #020202;
         }
         .invoice-header {
             margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 20px;
-            border-bottom: 2px solid #3488b2;
-            padding-bottom: 10px;
+            border-bottom: 2px dashed #ffffff98;
+            padding-bottom: 15px;
         }
         .invoice-header img {
             max-width: 120px;
             border-radius: 10px;
-            border: 3px solid #3488b2;
+            border: 3px dashed #ffffff98;
         }
         .invoice-header h1 {
             font-size: 36px;
-            color: #3488b2;
+            color: #fff;
         }
         .invoice-content {
-            margin-top: 20px;
+            margin-top: 30px;
         }
         .invoice-content h2 {
             font-size: 24px;
             margin-bottom: 15px;
-            color: #3488b2;
+            color: #fff;
         }
         .invoice-content p {
             margin: 8px 0;
-            color: #666;
+            color: #d2d2d2;
         }
         .invoice-content strong {
             color: #3488b2;
         }
         .invoice-termos {
             margin-top: 20px;
-            border-top: 2px solid #3488b2;
+            border-top: 2px dashed #ffffff98;
             padding-top: 10px;
         }
         .invoice-termos h3 {
             font-size: 20px;
-            color: #3488b2;
+            color: #fff;
         }
         .invoice-termos p {
             margin: 8px 0;
-            color: #666;
+            color: #d2d2d2;
         }
         .invoice-footer {
             margin-top: 20px;
-            border-top: 2px solid #3488b2;
+            border-top: 2px dashed #ffffff98;
             padding-top: 10px;
         }
         .invoice-footer p {
             margin: 4px 0;
-            color: #666;
+            color: #d2d2d2;
         }
         button {
             padding: 12px 20px;
             font-size: 18px;
-            background-color: #3488b2;
+            background-color: #0000006f;
+            backdrop-filter: blur(15px);
             color: white;
-            border: none;
+            border: 2px dashed #ffffff98;
             border-radius: 5px;
             cursor: pointer;
             margin-top: 20px;
-            transition: background-color 0.3s;
+            transition: 0.5s ease-in-out;
         }
         button:hover {
-            background-color: #2a6a8a;
+           box-shadow: 0 0 20px #020202;
+           background-color: #000000b9;
+           transform: translateY(-4px);
         }
         .points-accumulated {
             margin-top: 10px;
             font-size: 18px;
             color: #3488b2;
         }
+
+        .particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(52, 136, 178, 0.6);
+    box-shadow: 0 0 2rem rgba(52, 136, 178, 0.6);
+    pointer-events: none;
+    animation: particleAnimation 10s linear infinite;
+    opacity: 0;
+}
+
+.particle:nth-child(even) {
+    background: rgba(178, 52, 52, 0.6);
+    box-shadow: 0 0 2rem rgba(178, 52, 52, 0.6);
+}
+
+@keyframes particleAnimation {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+}
+
+/* Barra de rolagem no Webkit (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 12px; /* Largura da barra de rolagem vertical */
+}
+
+::-webkit-scrollbar-track {
+    background: #0c192c; /* Cor de fundo da trilha da barra de rolagem */
+    border-radius: 10px; /* Borda arredondada da trilha */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3488b2; /* Cor do "polegar" da barra de rolagem */
+    border-radius: 10px; /* Borda arredondada do polegar */
+    border: 3px solid #0c192c; /* Cor da borda ao redor do polegar */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2979b8; /* Cor do polegar ao passar o mouse */
+}
     </style>
 </head>
 <body>
@@ -181,5 +237,40 @@ function captureScreenshot() {
 }
 
     </script>
+
+<div class="particles">
+    <!-- Particles are added programmatically via JavaScript for better control -->
+</div>
+<script>
+    // JavaScript to create particles
+    function createParticles() {
+        const container = document.querySelector('.particles');
+        for (let i = 10; i < 250; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = `${Math.random() * 20 + 5}px`;
+            particle.style.height = particle.style.width;
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.top = `${Math.random() * 100}vh`;
+            particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+            particle.style.opacity = `${Math.random() * 0.5 + 0.3}`;
+            container.appendChild(particle);
+        }
+    }
+    createParticles();
+
+    // JavaScript to handle fullscreen text animation
+    window.addEventListener('load', () => {
+        const fullscreenText = document.getElementById('fullscreenText');
+        fullscreenText.style.opacity = 1;
+        setTimeout(() => {
+            fullscreenText.style.opacity = 0;
+            setTimeout(() => {
+                fullscreenText.style.display = 'none';
+            }, 1000); // match transition duration
+        }, 5000); // display for 5 seconds
+    });
+    </script>
+
 </body>
 </html>
