@@ -18,6 +18,27 @@ function showAlert(message) {
     };
 }
 
+// Variável global de controle para ativar o bloco else
+let enableElse = true; // Definido como true para que as inscrições estejam fechadas por padrão
+
+function staff() {
+    // Verifica se o bloco else deve ser executado
+    if (enableElse) {
+        // Código a ser executado se o bloco else estiver ativado
+        showAlert('Inscrições Fechadas');
+    } else {
+        showAlert('As Inscrições de Staffs foram abertas! Redirecionando...');
+        // Atraso de 3 segundos antes de redirecionar
+        setTimeout(function() {
+            window.location.href = './forms/'; // Substitua pelo URL da página para a qual deseja redirecionar
+        }, 3000);
+    }
+}
+
+
+
+
+
 // Função para alternar o estado do aviso
 function aviseMe() {
     const link = document.getElementById('notify-link');

@@ -39,7 +39,7 @@ body {
     justify-content: center;
     align-items: center; /* Centraliza os itens dentro da .center verticalmente */
     text-align: center;
-    width: 90%; /* Garante que .center ocupe todo o espaço disponível no .menu */
+    width: 72%; /* Garante que .center ocupe todo o espaço disponível no .menu */
 }
 
 .menu .center li a {
@@ -75,6 +75,7 @@ body {
 .menu .right {
     display: flex;
     gap: 1.7rem;
+    align-items: center;
 }
 
 .menu .right #discord-btn {
@@ -119,6 +120,28 @@ body {
         0 0 20px #FD1D1D44, /* Rosa */
         0 0 30px #F5604044, /* Laranja */
         0 0 40px #FCAF4544; /* Amarelo */
+}
+
+.menu .right #staff {
+    display: flex;
+    background: linear-gradient(40deg, #3488b2, #163b4e);
+    padding:10px;
+    text-decoration: none;
+    color: #fff;
+    gap: .5rem;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    transition: .5s ease-in-out;
+    font-size: 15px;
+    text-shadow: 0 0 5px #000000c8;
+    border-radius: 2px dashed #ffffff00;
+    transition: .5s ease-in-out;
+}
+
+.menu .right #staff:hover {
+    box-shadow: 0 0 30px #000000c4;
+    transform: translateY(-8px) scale(1.01);
 }
 
 #home {
