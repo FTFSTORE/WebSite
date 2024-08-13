@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>ERRO</title>
+    <style>
+
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(52, 136, 178, 0.6);
+    box-shadow: 0 0 2rem rgba(52, 136, 178, 0.6);
+    pointer-events: none;
+    animation: particleAnimation 10s linear infinite;
+    opacity: 0;
+}
+
+.particle:nth-child(even) {
+    background: rgba(178, 52, 52, 0.6);
+    box-shadow: 0 0 2rem rgba(178, 52, 52, 0.6);
+}
+
+@keyframes particleAnimation {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+}
+
+/* Barra de rolagem no Webkit (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 12px; /* Largura da barra de rolagem vertical */
+}
+
+::-webkit-scrollbar-track {
+    background: #0c192c; /* Cor de fundo da trilha da barra de rolagem */
+    border-radius: 10px; /* Borda arredondada da trilha */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3488b2; /* Cor do "polegar" da barra de rolagem */
+    border-radius: 10px; /* Borda arredondada do polegar */
+    border: 3px solid #0c192c; /* Cor da borda ao redor do polegar */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2979b8; /* Cor do polegar ao passar o mouse */
+}
+
+.fullscreen-text {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-size: 4rem;
+    text-align: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    flex-direction: column;
+}
+.fullscreen-text h1 {
+    margin: 0;
+    font-size: 3rem;
+    animation: fadeIn 1s ease-in-out;
+}
+.fullscreen-text p {
+    font-size: 2rem;
+    margin: 20px 0 0;
+    animation: fadeIn 2s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+@keyframes slideIn {
+    from { transform: translateY(-100vh); }
+    to { transform: translateY(0); }
+}
+        /* Estilo geral do corpo */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0c192c; /* Cor de fundo suave */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Altura total da visualização */
+            text-align: center;
+        }
+
+        /* Estilo do conteúdo principal */
+        .content {
+            background-color: #000000c1; /* Fundo branco */
+            backdrop-filter: blur(10px);
+            border-radius: 10px; /* Cantos arredondados */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+            padding: 20px;
+            max-width: 500px; /* Largura máxima */
+            width: 100%; /* Largura total disponível */
+        }
+
+        /* Estilo do título */
+        h1 {
+            font-size: 2.5rem;
+            color: #dc3545; /* Vermelho para indicar erro */
+            margin-bottom: 10px;
+        }
+
+        /* Estilo do ícone de erro */
+        i {
+            margin-right: 10px;
+        }
+
+        /* Estilo do subtítulo */
+        h3 {
+            font-size: 1.5rem;
+            color: #ffffff; /* Cor cinza escuro */
+            margin-bottom: 20px;
+        }
+
+        /* Estilo do parágrafo com seta */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1rem;
+            color: rgba(52, 136, 178, 0.9); /* Cor azul para o texto */
+            margin-bottom: 10px;
+            gap: .5rem;
+        }
+
+        .toggle-container i {
+            margin-right: 10px;
+            transition: transform 0.5s ease-in-out; /* Animação suave para a seta */
+        }
+
+        .toggle-container.active i {
+            transform: rotate(180deg); /* Rotaciona a seta quando a lista está aberta */
+        }
+
+        /* Estilo da lista */
+        .options {
+            list-style: none; /* Remove os marcadores padrão */
+            padding: 0;
+            margin: 0;
+            max-height: 0; /* Inicialmente oculta */
+            overflow: hidden; /* Oculta o conteúdo que excede a altura */
+            transition: max-height 0.5s ease-out; /* Animação suave para expansão e contração */
+        }
+
+        .options.open {
+            max-height: 500px; /* Altura máxima da lista quando aberta */
+        }
+
+        li {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            text-align: left; /* Alinha o texto à esquerda */
+            color: #fff;
+        }
+
+        p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1><i class="fa-solid fa-triangle-exclamation"></i> ERRO</h1>
+        <h3>Erro ao tentar encontrar essa página.</h3>
+        <div class="toggle-container">
+            <p>Por que isso acontece?</p> 
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <ul class="options">
+            <li>
+                <p>Não encontramos essa página.</p>
+            </li>
+            <li>
+                <p>Essa página está em manutenção.</p>
+            </li>
+            <li>
+                <p>Essa página está em construção.</p>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        // JavaScript para alternar a visibilidade da lista
+        const toggleContainer = document.querySelector('.toggle-container');
+        const optionsList = document.querySelector('.options');
+
+        toggleContainer.addEventListener('click', () => {
+            optionsList.classList.toggle('open');
+            toggleContainer.classList.toggle('active');
+        });
+    </script>
+
+<div class="particles">
+    <!-- Particles are added programmatically via JavaScript for better control -->
+</div>
+
+<script src="script.js"></script>
+
+<script>
+     // JavaScript to create particles
+     function createParticles() {
+        const container = document.querySelector('.particles');
+        for (let i = 0; i < 200; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = `${Math.random() * 20 + 5}px`;
+            particle.style.height = particle.style.width;
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.top = `${Math.random() * 100}vh`;
+            particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+            particle.style.opacity = `${Math.random() * 0.5 + 0.3}`;
+            container.appendChild(particle);
+        }
+    }
+    createParticles();
+
+    // JavaScript to handle fullscreen text animation
+    window.addEventListener('load', () => {
+        const fullscreenText = document.getElementById('fullscreenText');
+        fullscreenText.style.opacity = 1;
+        setTimeout(() => {
+            fullscreenText.style.opacity = 0;
+            setTimeout(() => {
+                fullscreenText.style.display = 'none';
+            }, 1000); // match transition duration
+        }, 5000); // display for 5 seconds
+    });
+</script>
+</body>
+</html>
