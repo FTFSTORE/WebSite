@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nota Fiscal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #fff;
+            background-color: #0c192c;
+        }
+        .container {
+            background-color: #0000006f;
+            backdrop-filter: blur(10px);
+            max-width: 700px;
+            margin: 0 auto;
+            border: 2px dashed #ffffff98;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px #020202;
+        }
+        .invoice-header {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 2px dashed #ffffff98;
+            padding-bottom: 15px;
+        }
+        .invoice-header img {
+            max-width: 120px;
+            border-radius: 10px;
+            border: 3px dashed #ffffff98;
+        }
+        .invoice-header h1 {
+            font-size: 36px;
+            color: #fff;
+        }
+        .invoice-content {
+            margin-top: 30px;
+        }
+        .invoice-content h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        .invoice-content p {
+            margin: 8px 0;
+            color: #d2d2d2;
+        }
+        .invoice-content strong {
+            color: #3488b2;
+        }
+        .invoice-termos {
+            margin-top: 20px;
+            border-top: 2px dashed #ffffff98;
+            padding-top: 10px;
+        }
+        .invoice-termos h3 {
+            font-size: 20px;
+            color: #fff;
+        }
+        .invoice-termos p {
+            margin: 8px 0;
+            color: #d2d2d2;
+        }
+        .invoice-footer {
+            margin-top: 20px;
+            border-top: 2px dashed #ffffff98;
+            padding-top: 10px;
+        }
+        .invoice-footer p {
+            margin: 4px 0;
+            color: #d2d2d2;
+        }
+        button {
+            padding: 12px 20px;
+            font-size: 18px;
+            background-color: #0000006f;
+            backdrop-filter: blur(15px);
+            color: white;
+            border: 2px dashed #ffffff98;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.5s ease-in-out;
+        }
+        button:hover {
+           box-shadow: 0 0 20px #020202;
+           background-color: #000000b9;
+           transform: translateY(-4px);
+        }
+        .points-accumulated {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #3488b2;
+        }
+
+        .particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(52, 136, 178, 0.6);
+    box-shadow: 0 0 2rem rgba(52, 136, 178, 0.6);
+    pointer-events: none;
+    animation: particleAnimation 10s linear infinite;
+    opacity: 0;
+}
+
+.particle:nth-child(even) {
+    background: rgba(178, 52, 52, 0.6);
+    box-shadow: 0 0 2rem rgba(178, 52, 52, 0.6);
+}
+
+@keyframes particleAnimation {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+}
+
+/* Barra de rolagem no Webkit (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 12px; /* Largura da barra de rolagem vertical */
+}
+
+::-webkit-scrollbar-track {
+    background: #0c192c; /* Cor de fundo da trilha da barra de rolagem */
+    border-radius: 10px; /* Borda arredondada da trilha */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3488b2; /* Cor do "polegar" da barra de rolagem */
+    border-radius: 10px; /* Borda arredondada do polegar */
+    border: 3px solid #0c192c; /* Cor da borda ao redor do polegar */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2979b8; /* Cor do polegar ao passar o mouse */
+}
+    </style>
+</head>
+<body>
+    <div class="container" id="invoice">
+        <div class="invoice-header">
+            <img src="FTF (3).png" alt="Logo da Marca"> <!-- Adicione sua logo aqui -->
+            <h1>Nota Fiscal</h1>
+        </div>
+        <div class="invoice-content" id="invoice-content">
+            <!-- O conteúdo da nota fiscal será inserido aqui -->
+        </div>
+        <div class="invoice-termos">
+            <h3>Termos e Condições</h3>
+            <p>
+                1. A nota fiscal emitida é a confirmação da sua compra e deve ser guardada para resgatar pontos.
+            </p>
+            <p>
+                2. Ao acumular pontos suficientes, você pode resgatar um produto com o mesmo número de pontos acumulados.
+            </p>
+            <p>
+                3. A empresa reserva-se o direito de modificar os termos e condições sem aviso prévio. As alterações aplicam-se a futuras transações e não afetam os termos já aceitos.
+            </p>
+            <p>
+                4. É responsabilidade do cliente verificar os dados informados na nota fiscal no momento da compra. Qualquer erro deve ser comunicado imediatamente.
+            </p>
+            <p>
+                5. Para dúvidas ou suporte, entre em contato conosco através do canal de atendimento no Discord.
+            </p>
+        </div>
+        <div class="invoice-footer">
+            <p><strong>Empresa:</strong> FTF STORE - DISCORD</p>
+            <p><strong>Data:</strong> <span id="date"></span></p>
+            <p><strong>Número da NF:</strong> <span id="invoice-number"></span></p>
+            <p class="points-accumulated" id="points-accumulated"></p>
+        </div>
+    </div>
+    <button onclick="captureScreenshot()">Tire Print</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+       window.onload = function() {
+    // Recuperar dados do localStorage
+    const name = localStorage.getItem('name');
+    const productDetails = localStorage.getItem('productDetails');
+    const totalPrice = parseFloat(localStorage.getItem('totalPrice'));
+
+    // Gerar número da nota fiscal (simples número sequencial ou aleatório)
+    const invoiceNumber = `NF-${Math.floor(Math.random() * 1000000)}`;
+
+    // Calcular pontos acumulados (60 pontos a cada R$5)
+    const pointsAccumulated = Math.floor(totalPrice / 10) * 60;
+
+    // Exibir dados na página
+    const invoiceContent = document.getElementById('invoice-content');
+    invoiceContent.innerHTML = `
+        <h2>Detalhes da Nota Fiscal</h2>
+        <p><strong>Nome:</strong> ${name}</p>
+        <div>${productDetails}</div>
+        <p><strong>Valor Total:</strong> R$${totalPrice.toFixed(2)}</p>
+        <p class="points-accumulated"><strong>Pontos Acumulados:</strong> ${pointsAccumulated}p</p>
+    `;
+
+    // Adicionar a data atual e o número da nota fiscal
+    const date = new Date().toLocaleDateString('pt-BR');
+    document.getElementById('date').textContent = date;
+    document.getElementById('invoice-number').textContent = invoiceNumber;
+};
+
+function captureScreenshot() {
+    html2canvas(document.getElementById('invoice')).then(canvas => {
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/png');
+        link.download = `NF.FTF_STORE.png`;
+        link.click();
+
+        // Redirecionar para a página de carregamento
+        window.location.href = 'loading2.html';
+        
+        // Limpar dados do localStorage após redirecionar para a página de carregamento
+        setTimeout(() => {
+            localStorage.removeItem('name');
+            localStorage.removeItem('productDetails');
+            localStorage.removeItem('totalPrice');
+        }, 4000); // Adiciona um pequeno atraso para garantir que o redirecionamento aconteça primeiro
+    });
+}
+
+    </script>
+
+<div class="particles">
+    <!-- Particles are added programmatically via JavaScript for better control -->
+</div>
+<script>
+    // JavaScript to create particles
+    function createParticles() {
+        const container = document.querySelector('.particles');
+        for (let i = 10; i < 250; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = `${Math.random() * 20 + 5}px`;
+            particle.style.height = particle.style.width;
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.top = `${Math.random() * 100}vh`;
+            particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+            particle.style.opacity = `${Math.random() * 0.5 + 0.3}`;
+            container.appendChild(particle);
+        }
+    }
+    createParticles();
+
+    // JavaScript to handle fullscreen text animation
+    window.addEventListener('load', () => {
+        const fullscreenText = document.getElementById('fullscreenText');
+        fullscreenText.style.opacity = 1;
+        setTimeout(() => {
+            fullscreenText.style.opacity = 0;
+            setTimeout(() => {
+                fullscreenText.style.display = 'none';
+            }, 1000); // match transition duration
+        }, 5000); // display for 5 seconds
+    });
+    </script>
+
+</body>
+</html>

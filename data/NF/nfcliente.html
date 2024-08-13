@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NF GENERATE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>NF GENERATE</h1>
+        <p>Gere notas fiscais muito mais fácil, essa ferramenta foi criada para melhorar a experiência do adm.</p><br><br>
+        <div id="products">
+            <b>Insira os produtos abaixo:</b>
+            <div class="form-group product-row">
+                <input type="text" placeholder="Nome do Produto">
+                <input type="number" placeholder="Valor R$" step="0.01" min="0">
+            </div>
+        </div><br>
+        <button class="add-product" onclick="addProduct()"><i class="fa-solid fa-plus"></i></button>
+        <br><br><br>
+        <div class="form-group2">
+            <label for="name">Nome da Pessoa:</label>
+            <input type="text" id="name" placeholder="Digite o nome">
+        </div><br>
+
+        <div class="form-group2">
+            <label for="total">Valor Total:</label>
+            <input type="text" id="total" placeholder="Valor total aparecerá aqui." readonly>
+        </div><br><br>
+        <button onclick="generateNote()"><i class="fa-solid fa-print"></i> GENERATE</button>
+    </div>
+
+    <div class="particles">
+        <!-- Particles are added programmatically via JavaScript for better control -->
+    </div>
+    <script>
+        // JavaScript to create particles
+        function createParticles() {
+            const container = document.querySelector('.particles');
+            for (let i = 10; i < 250; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = `${Math.random() * 20 + 5}px`;
+                particle.style.height = particle.style.width;
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                particle.style.opacity = `${Math.random() * 0.5 + 0.3}`;
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // JavaScript to handle fullscreen text animation
+        window.addEventListener('load', () => {
+            const fullscreenText = document.getElementById('fullscreenText');
+            fullscreenText.style.opacity = 1;
+            setTimeout(() => {
+                fullscreenText.style.opacity = 0;
+                setTimeout(() => {
+                    fullscreenText.style.display = 'none';
+                }, 1000); // match transition duration
+            }, 5000); // display for 5 seconds
+        });
+        </script>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

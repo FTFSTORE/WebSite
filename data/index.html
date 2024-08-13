@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Fluxos Prime</title>
+</head>
+<body>
+
+    <div class="select-menu">
+        <div class="select-btn">
+            <span class="sBtn-text">Selecione seu Cargo</span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    
+        <ul class="options">
+            <li class="option" data-modal="admin-modal">
+                <i class="fa-solid fa-hammer"></i>
+                <span class="option-text">Administrador(a)</span>
+            </li>
+            <li class="option" data-modal="attendant-modal">
+                <i class="fa-solid fa-headphones"></i>
+                <span class="option-text">Atendente</span>
+            </li>
+            <li class="option" data-modal="ti-modal">
+                <i class="fa-solid fa-desktop"></i>
+                <span class="option-text">TI (Tecnologia da Informação)</span>
+            </li>
+            <li class="option" data-modal="design-modal">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span class="option-text">Design</span>
+            </li>
+        </ul>
+    </div>
+    
+    <!-- Modal de Carregamento -->
+    <div id="loading-modal" class="loading-modal">
+        <div class="loading-modal-content">
+            <div class="spinner"></div>
+            <p>Carregando...</p>
+        </div>
+    </div>
+    
+    <!-- Modais Específicos -->
+    <div id="admin-modal" class="specific-modal">
+        <div class="specific-modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Conteúdo Administrador(a)</h2>
+            <p>Essa ferramenta foi criada para facilitar o acesso dos adms.</p>
+            <br>
+            <div class="btns">
+                <a href="./NF/nfcliente"><i class="fa-solid fa-print"></i> NF GENERATOR</a>
+                <a href="#" onclick="alert('Controls are under maintenance'); return false;">
+                    <i class="fa-solid fa-gears"></i> Controls
+                </a>
+                <a href="#" onclick="alert('Logs are under maintenance'); return false;">
+                    <i class="fa-solid fa-bars-staggered"></i> Logs
+                </a>                
+            </div>
+        </div>
+    </div>
+    
+    <div id="attendant-modal" class="specific-modal">
+        <div class="specific-modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Conteúdo Atendente</h2>
+            <p>Essa ferramenta foi criada para facilitar o acesso dos atendentes.</p>
+            <br>
+            <div class="btns">
+                <a href="./NF/nfcliente"><i class="fa-solid fa-print"></i> NF GENERATOR</a>               
+            </div>
+        </div>
+    </div>
+    
+    <div id="ti-modal" class="specific-modal">
+        <div class="specific-modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Conteúdo TI</h2>
+            <p>Essa ferramenta foi criada para facilitar o acesso dos TIs.</p>
+            <br>
+            <div class="btns">
+                <a href="./NF/nfcliente"><i class="fa-solid fa-print"></i> NF GENERATOR</a>               
+            </div>
+        </div>
+    </div>
+    
+    <div id="design-modal" class="specific-modal">
+        <div class="specific-modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Conteúdo Design</h2>
+            <p>Essa ferramenta foi criada para facilitar o acesso dos designers.</p>
+            <br>
+            <div class="btns">
+                <a href="./NF/nfcliente"><i class="fa-solid fa-print"></i> NF GENERATOR</a>               
+            </div>
+        </div>
+    </div>
+
+    <div class="particles">
+        <!-- Particles are added programmatically via JavaScript for better control -->
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+         // JavaScript to create particles
+         function createParticles() {
+            const container = document.querySelector('.particles');
+            for (let i = 0; i < 200; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = `${Math.random() * 20 + 5}px`;
+                particle.style.height = particle.style.width;
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                particle.style.opacity = `${Math.random() * 0.5 + 0.3}`;
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // JavaScript to handle fullscreen text animation
+        window.addEventListener('load', () => {
+            const fullscreenText = document.getElementById('fullscreenText');
+            fullscreenText.style.opacity = 1;
+            setTimeout(() => {
+                fullscreenText.style.opacity = 0;
+                setTimeout(() => {
+                    fullscreenText.style.display = 'none';
+                }, 1000); // match transition duration
+            }, 5000); // display for 5 seconds
+        });
+    </script>
+</body>
+</html>
